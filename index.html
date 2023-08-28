@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="corporate">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone hunting API</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.2/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="container mx-auto  my-12">
+    <!-- header part starts here -->
+    <header class="">
+        <!-- logo part -->
+        <div class="flex justify-between">
+            <h4 class="text-lg font-bold">Hot Gadgets</h4>
+            <button class="btn btn-primary rounded-lg px-6 mb20">Sign Up</button>
+        </div>
+        <!-- banner part -->
+        <div class="mt-14 text-center space-y-8">
+            <h1 class="text-6xl font-bold">Apple Iphone 13 Pro Max</h1>
+            <p class="text-base">There are many variations of passages of Lorem Ipsum available, but the majority <br>
+                have suffered alteration in some form, by injected humou.</p>
+            <button class="btn btn-primary rounded-lg px-6">Buy Now</button>
+            <div class="flex items-end justify-center ">
+                <img class=" w-40 h-60" src="images/pngwing 3.png" alt="">
+                <img class=" w-44 h-80 " src="images/pngwing 1.png" alt="">
+                <img class=" w-40 h-60" src="images/pngwing 2.png" alt="">
+            </div>
+        </div>
+    </header>
+    <!-- header part ends here -->
+
+    <!-- main part starts here -->
+    <main class="">
+        <!-- Search phone section -->
+        <section class="text-center mt-20">
+            <h3 class="text-2xl font-semibold mb-4">Search your phone</h3>
+            <input id="Search-field" class=" w-4/12 text-gray-800 placeholder-gray-400
+                        inline-block border-2 rounded-lg py-2 px-4 bg-gray-100" placeholder="Search phones..."
+                type="text">
+            <button onclick="handleSearch()" class="btn btn-primary rounded-lg px-6 mb-16">Buy Now</button>
+            <!-- spinner loading -->
+            <div class=" text-center mb-16">
+                <span id="loading-spinner" class="hidden text-blue-600 loading loading-spinner loading-lg"></span>
+            </div>
+        </section>
+        <!-- phones container section  -->
+        <section class="">
+            <div id="phones-container" class="space-y-4 mt-16 grid grid-cols-1 md:grid-cols-2 
+            lg:grid-cols-3 gap-4">
+            </div>
+            <div id="show-all-container" class="hidden mt-12 text-center">
+                <button onclick="handleShowAll()" class="btn btn-primary rounded-lg px-6 ">Show All</button>
+            </div>
+        </section>
+
+        <!-- modal section -->
+        <section>
+            <!-- Open the modal using ID.showModal() method -->
+
+            <div id="detail-container" class="">
+                <!-- Open the modal using ID.showModal() method -->
+                <dialog id="show_detail_modal" class="modal modal-bottom sm:modal-middle">
+                    <form method="dialog" class="modal-box">
+
+                        <!-- there is phone details -->
+                        <div id="phone-details" class="space-y-4">
+
+                        </div>
+                        <div class="modal-action">
+                            <!-- if there is a button in form, it will close the modal -->
+                            <button class="btn">Close</button>
+                        </div>
+                    </form>
+                </dialog>
+            </div>
+        </section>
+    </main>
+    <!-- main part ends here -->
+
+    <!-- footer part starts here -->
+    <footer class="">
+
+    </footer>
+    <!-- footer part ends here -->
+
+    <!-- javascript Link -->
+    <script src="js/index.js"></script>
+</body>
+
+</html>
