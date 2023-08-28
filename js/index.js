@@ -3,11 +3,10 @@ const loadPhone = async (searchText = 'a', isShowAll) => {
   const data = await res.json();
   const phones = data.data;
   displayPhones(phones, isShowAll)
-  // console.log(phones)
 }
 
 const displayPhones = (phones, isShowAll) => {
-  // console.log(phones);
+
   const phonesContainer = document.getElementById('phones-container');
   phonesContainer.textContent = '';
   const showAllContainer = document.getElementById('show-all-container');
@@ -29,10 +28,10 @@ const displayPhones = (phones, isShowAll) => {
     phoneCard.innerHTML = `
         <figure class="bg-zinc-200"><img class="w-50 h-36 p-4" src="${phone.image}" alt="" /></figure>
         <div class="card-body  text-center">
-          <h2 class="text-lg font-semibold">${phone.phone_name}</h2>
-          <p></p>
+        <p class="text-lg font-semibold">${phone?.brand}</p>
+          <h2 class="text-lg font-semibold">${phone?.phone_name}</h2>
           <div class="card-actions justify-center">
-            <button onclick="handleShowDetails('${phone.slug}')" class="btn btn-primary rounded-lg px-7">Show Details</button>
+            <button onclick="handleShowDetails('${phone?.slug}')" class="btn btn-primary rounded-lg px-7">Show Details</button>
           </div>
         </div>
         `
@@ -42,12 +41,13 @@ const displayPhones = (phones, isShowAll) => {
 }
 
 const handleSearch = (isShowAll) => {
+  
   toggleLoadingSpinner(true)
   const searchField = document.getElementById('Search-field');
   const searchText = searchField.value;
   loadPhone(searchText, isShowAll)
-  // console.log(searchText)
-  searchField.innerText = " ";
+  
+  searchField = "";
 
 }
 
@@ -67,21 +67,22 @@ const handleShowDetails = async (id) => {
   const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
   const data = await res.json();
   const phone = data.data;
-  showPhoneDetail(phone)  
+  showPhoneDetail(phone)
 }
-// handleShowDetails()
 
 const showPhoneDetail = (phone) => {
-  console.log(phone);
 
   const showDetailContainer = document.getElementById('phone-details');
   showDetailContainer.innerHTML = `
   <h3>${phone.name}</h3>
   <img src="${phone?.image}" alt="">
+  <p class="text-lg"><span class="text-lg font-semibold">Brand:</span> ${phone?.brand}</p>
   <p class="text-lg"><span class="text-lg font-semibold">storage:</span> ${phone?.mainFeatures?.storage}</p>
   <p class="text-lg"><span class="text-lg font-semibold">displaySize:</span> ${phone?.mainFeatures?.displaySize}</p>
   <p class="text-lg"><span class="text-lg font-semibold">slug:</span> ${phone.slug}</p>
   <p class="text-lg"><span class="text-lg font-semibold">chipSet:</span> ${phone?.mainFeatures?.chipSet}</p>
+  <p class="text-lg"><span class="text-lg font-semibold">Memory:</span> ${phone?.mainFeatures?.memory}</p>
+  <p class="text-lg"><span class="text-lg font-semibold">GPS:</span> ${phone?.others?.GPS || 'gos not available'}</p>
   
   `
   show_detail_modal.showModal()
